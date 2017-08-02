@@ -1,0 +1,7 @@
+<div class="col-md-8 offset-md-2">
+  <%= form_for([@bicycle, @comment], url: [:blog, @bicycle, :comments], remote: true) do |f| %>
+    <%= f.text_area :content, placeholder: 'Leave your comment here', id: "body_input", class: 'form-control' %><br>
+    <%= f.submit 'Comment', class: 'btn btn-default' %>
+  <% end %>
+  <hr>
+</div>

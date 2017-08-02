@@ -1,0 +1,35 @@
+.panel-shadow {
+    box-shadow: rgba(0, 0, 0, 0.3) 7px 7px 7px;
+    margin-bottom: 10px;
+}
+.panel-white {
+  border: 1px solid #dddddd;
+}
+.panel-white  .panel-heading {
+  color: #333;
+  background-color: #fff;
+  border-color: #ddd;
+}
+.panel-white  .panel-footer {
+  background-color: #fff;
+  border-color: #ddd;
+}
+
+.post .post-heading {
+  height: 95px;
+  padding: 20px 15px;
+}
+.post .post-heading .meta .title {
+  margin-bottom: 0;
+}
+.post .post-heading .meta .time {
+  color: $secondary-text-color;
+  font-size: 75%;
+}
+.post .post-description {
+  padding: 15px;
+  background-color: white;
+}
+.post .post-description p {
+  font-size: 14px;
+}

@@ -1,0 +1,10 @@
+<% provide(:page_title, "New category") %>
+<% provide(:categories, 'active') %>
+
+<div class="row text-center">
+  <div class="col-md-6 offset-md-3">
+	<h2>New category</h2>
+  </div>
+</div>
+
+<%= render 'form', category: @category, url: authors_categories_path %>

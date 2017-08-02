@@ -1,0 +1,27 @@
+<% provide(:page_title, 'All bicycles') %>
+<% provide(:blog_active, 'active') %>
+
+<div class="row">
+  <div class="col-md-12">
+    <%= form_tag blog_bicycles_path, method: 'get', id: "bicycles_search" do %>
+      <div class="form-inputs" id="bicycles-search-input">
+        <div class="input-group">
+          <%= text_field_tag :search, params[:search], placeholder: 'Search for bicycles', class: 'form-control input-lg', id: 'searching_bicycles' %>
+          <span class="input-group-btn">
+            <%= button_tag(type: "submit", class: "btn btn-info btn-lg") do %>
+              <%= fa_icon('search', class: 'fa')%>
+            <% end %>
+          </span>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+<br>
+<div id="bicycles" class="row">	
+  <%= render @bicycles %>
+</div>
+
+<div class="apple_pagination">
+  <%= will_paginate @bicycles, container: false %>
+</div>

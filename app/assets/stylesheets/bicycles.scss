@@ -1,0 +1,94 @@
+.bicycles.index {
+  .card {
+    border: none;
+    border-radius: 0;
+    height: 400px;
+    margin-bottom: 20px;
+    background-color: white;
+    .card-topper {
+      height: 200px;
+      width: 100%;
+      background-size: cover;
+      background-position: center;
+    }
+    .card-block {
+      padding: 10px;
+      .card-title {
+        font-size: 1.3rem;
+        margin-bottom: 0;
+        a {
+          color: black;
+          text-decoration: none;
+        }
+      }
+      .tags {
+        margin-bottom: 0;
+        a {
+          font-size: 12px;
+        }
+      }
+      .published-date {
+        font-size: 0.8rem;
+        color: #787878;
+        font-weight: 300;
+        margin-top: 0.3rem;
+        margin-bottom: 0.3rem;
+      }
+    }
+  }
+}
+
+.bicycles.edit, .bicycles.new {
+  .card {
+    .card-block {
+      background-color: $light-gray;
+    }
+    .card-title {
+      margin-bottom: 0;
+      font-size: 18px;
+    }
+    .list-group-item {
+      padding: 10px;
+      border-left: 0;
+      border-right: 0;
+      input[type='text'], textarea {
+        font-size: 14px;
+      }
+    }
+    .selectize {
+      width: 100%;
+    }
+    #submit-post {
+      width: 100%;
+    }
+  }
+}
+
+.bicycles.show {
+  .post-image {
+    border-radius: 3%;
+  }
+  .publish {
+    color: $secondary-text-color;
+  }
+}
+
+@media screen and (min-width: 34em) {
+  .bicycles.index .card {
+    height: 440px;
+  }
+}
+
+/* Medium. Above 48em (768px) */
+@media screen and (min-width: 48em) {
+  .bicycles.index .card {
+    height: 420px;
+  }
+}
+
+/* Extra large. Above 75em (1200px) */
+@media screen and (min-width: 75em) {
+  .bicycles.index .card {
+    height: 415px;
+  }
+}

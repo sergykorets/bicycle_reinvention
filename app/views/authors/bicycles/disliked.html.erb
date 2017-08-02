@@ -1,0 +1,38 @@
+<% provide(:page_title, 'Disliked') %>
+<% provide(:disliked, 'active') %>
+
+<div class="row">
+  <div class="col-md-8 offset-md-2">
+    <table class="table table-striped">
+      <tr>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Actions</th>
+      </tr>
+      <% @bicycles.each do |bicycle| %>
+        <tr onclick="location.href='<%= blog_bicycle_path(bicycle) %>'">
+          <td><%= bicycle.name %></td>
+          <% unless bicycle.author.name.blank? %>
+            <td><%= bicycle.author.name %></td>
+          <% else %>
+            <td><%= bicycle.author.email %></td>
+          <% end %>
+          <td>
+            <%= link_to like_authors_bicycle_path(bicycle.id), method: :post do %>
+              <%= fa_icon("thumbs-o-up", class: "fa") %>
+            <% end %>    
+          </td>
+        </tr>
+      <% end %>  
+    </table>
+  </div> 
+</div>
+
+<% if current_author.dislikes.count > 10 %>
+  <div class="col-md-8 offset-md-2 apple_pagination">
+    <%= will_paginate @bicycles, container: false %>
+  </div>
+<% end %> 
+
+
+ 

@@ -1,0 +1,29 @@
+<% provide(:page_title, @bicycle.name) %>
+<% provide(:author, 'active') %>
+
+<div>
+  <%= link_to "Edit", edit_authors_bicycle_path(@bicycle), class: 'btn btn-sm btn-warning' %>
+  <%= link_to "Remove", authors_bicycle_path(@bicycle), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-danger' %>
+  <% if @bicycle.published? %>
+    <%= link_to "Unublish", unpublish_authors_bicycle_path(@bicycle), method: :put, class: 'btn btn-sm btn-primary' %>
+  <% else %>
+    <%= link_to "Publish", publish_authors_bicycle_path(@bicycle), method: :put, class: 'btn btn-sm btn-success' %>
+  <% end %>
+</div>
+
+<div class="row">
+  <div class="col-md-8 offset-md-2">
+    <% if !@bicycle.image.nil? %>
+      <div class="text-center">
+        <%= image_tag @bicycle.image.url(:medium), class: "post-image" %>
+      </div>
+    <% end %>
+    <hr>
+    <h1 class="text-center"><b><%= @bicycle.name %></b></h1>
+    <hr>
+    <p class="publish"><%= @bicycle.display_day_published %></p>
+    <%= @bicycle.content.html_safe %>
+    <hr>
+  </div>
+</div>
+

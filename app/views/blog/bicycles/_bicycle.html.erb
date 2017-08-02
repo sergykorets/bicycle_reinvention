@@ -1,0 +1,16 @@
+<div class='col-sm-6 col-lg-4'>
+  <div class="card">
+    <%= link_to blog_bicycle_path(bicycle) do %>
+      <div class="card-topper"><%= image_tag bicycle.image.url(:thumb) %></div>
+    <% end %>
+    <div class="card-block">
+      <%= link_to dislike_blog_bicycle_path(bicycle), method: :post do %>
+        <%= fa_icon('thumbs-o-down', class: 'fa pull-right')%>
+      <% end %>
+      <h4 class="card-title"><%= link_to bicycle.name, blog_bicycle_path(bicycle) %></h4>
+      <p><%= link_to bicycle.category.name, root_path(category: bicycle.category.id) %></p>
+      <h6 class="published-date"><%= bicycle.display_day_published %></h6>
+      <p class="card-text"><%= truncate_html(bicycle.content, length: 110) %></p>
+    </div>
+  </div>
+</div>

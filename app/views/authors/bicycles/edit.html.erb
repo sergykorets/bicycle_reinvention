@@ -1,0 +1,4 @@
+<% provide(:page_title, "Edit #{@bicycle.name}") %>
+<% provide(:author, 'active') %>
+<%= tinymce_assets %>
+<%= render 'form', bicycle: @bicycle, url: authors_bicycle_url(@bicycle) %>

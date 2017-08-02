@@ -1,0 +1,30 @@
+<%= form_for(category, url: url) do |f| %>
+
+  <% if category.errors.any? %>
+    <div class="col-md-6 offset-md-3 alert alert-info">
+          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+      <h2><%= pluralize(category.errors.count, "error") %> prohibited this category from being saved:</h2>
+
+      <ul>
+      <% category.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+        
+        <div class="form-login">
+          <%= f.text_field :name, autofocus: true, class: "form-control input-sm chat-input", placeholder: "name" %>
+          </br>
+          <div class="wrapper">
+            <span class="group-btn"> 
+                <%= f.submit "save", class: "btn btn-primary btn-md" %>
+            </span>
+          </div>
+        </div>
+    </div>
+  </div>
+<% end %>

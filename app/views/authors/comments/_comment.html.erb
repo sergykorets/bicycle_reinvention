@@ -1,0 +1,31 @@
+<% if !comment.nil? %>
+	<div class="well">
+		<div class="row">       
+		    <div class="col-md-10 offset-md-1 col-lg-8 offset-lg-2 text-xs-center">
+		        <div class="panel panel-white post panel-shadow" id="comment_<%= comment.id %>">
+		            <div class="post-heading">
+		                <div class="pull-left">
+		                    <%= image_tag comment.author.avatar.url(:thumb), class: 'round-image-30' %>
+		                </div>
+		                <div class="pull-left meta" style="margin-left: 1%;">
+		                    <div class="title h5">
+		                        <p class="comment"><b><%= comment.author.name %></b></p>
+		                    </div>
+		                    <h6 class="text-muted time"><%= time_ago_in_words(comment.updated_at) %> ago</h6>
+		                </div>  
+		            </div>
+		            <% if !comment.content.blank? %>
+		                <div class="post-description"> 
+		                    <p class="comment"><%= comment.content %></p>
+		                </div>
+		            <% end %>
+		            <% if comment.owner?(current_author) %>
+			            <%= button_to(blog_post_comment_path(@post.id,comment.id), {method: :delete, remote: true, class:"btn btn-danger delete-comment-button pull-right", params: {id: comment.id, post: @post.id}} ) do %>
+			      			<i class="fa fa-trash-o" aria-hidden="true"></i>
+			      		<% end %>
+		      		<% end %>
+		        </div>
+		    </div>
+		</div>
+	</div>
+<% end %>

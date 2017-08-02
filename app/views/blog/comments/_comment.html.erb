@@ -1,0 +1,31 @@
+<% if !comment.nil? %>
+  <div class="col-md-8 offset-md-2">
+    <div class="panel panel-white post panel-shadow" id="comment_<%= comment.id %>">
+      <div class="post-heading">
+        <div class="pull-left">
+          <%= image_tag comment.author.avatar.url(:thumb), id: 'round-image-30' %>
+        </div>
+        <div class="pull-left meta" style="margin-left: 1%;">
+          <div class="title h6">
+            <% unless comment.author.name.blank? %>
+              <p><b><%= comment.author.name %></b></p>
+            <% else %>
+              <p><b><%= comment.author.email %></b></p>
+            <% end %>  
+          </div>
+          <h6 class="time"><%= time_ago_in_words(comment.updated_at) %> ago</h6>
+        </div>
+        <div class="pull-right">
+          <% if comment.owner?(current_author) %>
+            <%= button_to([:blog, @bicycle, comment], { method: :delete, remote: true, data: { confirm: "You sure?" }, class: "btn btn-sm btn-danger" } ) do %>
+              <i class="fa fa-trash-o" aria-hidden="true"></i>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+      <div class="post-description"> 
+        <p><%= comment.content %></p>
+      </div>
+    </div>
+  </div>
+<% end %>
