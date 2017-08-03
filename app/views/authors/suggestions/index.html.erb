@@ -1,0 +1,15 @@
+<% provide(:page_title, 'My suggestions') %>
+<% provide(:suggestions, 'active') %>
+
+<div class="row">
+  <div class="col-md-8 offset-md-2">
+  	<table class="table table-striped">
+      <tr>
+        <th>Bicycle</th>
+        <th>Suggestion</th>
+        <th colspan="2">Actions</th>
+      </tr>
+      <%= render @suggestions %>
+    </table>
+  </div>  
+</div>

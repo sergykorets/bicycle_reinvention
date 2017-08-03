@@ -1,0 +1,24 @@
+<% provide(:page_title, @suggestion.name) %>
+<% provide(:author, 'active') %>
+
+<% if @suggestion.owner?(current_author) %>
+  <div>
+    <%= link_to "Edit", edit_authors_bicycle_suggestion_path(@bicycle, @suggestion), class: 'btn btn-sm btn-warning' %>
+    <%= link_to "Remove", authors_bicycle_suggestion_path(@bicycle, @suggestion), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-danger' %>
+  </div>
+<% else %>
+  <td><%= link_to "Approve", approve_authors_bicycle_suggestion_path(@bicycle, @suggestion), method: :post, class: 'btn btn-sm btn-success' %></td>
+  <td><%= link_to "Disapprove", disapprove_authors_bicycle_suggestion_path(@bicycle, @suggestion), method: :post, class: 'btn btn-sm btn-danger' %></td>  
+<% end %>
+
+<div class="row">
+  <div class="col-md-8 offset-md-2">
+    <hr>
+    <h1 class="text-center"><b><%= @suggestion.name %></b></h1>
+    <hr>
+    <p class="publish"><%= @suggestion.updated_at %></p>
+    <%= @suggestion.content.html_safe %>
+    <hr>
+  </div>
+</div>
+

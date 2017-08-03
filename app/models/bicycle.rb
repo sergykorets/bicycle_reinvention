@@ -26,15 +26,15 @@ class Bicycle < ApplicationRecord
   has_many :comments, dependent: :destroy
   belongs_to :category
   has_many :dislikes, dependent: :destroy
+  has_many :suggestions
+
+  #accepts_nested_attributes_for :suggestion
 
   validates_presence_of :name
   validates_presence_of :content
 
   scope :most_recent, -> { order(published_at: :desc) }
-  scope :published, -> { where(published: true) }
-  scope :disliked, -> { joins(:dislikes).where('dislikes.author_id is not null') }
-  scope :without_disliked, -> { where('id NOT IN (?)', @bicycles) }
-  
+  scope :published, -> { where(published: true) }  
 
   has_attached_file :image, styles: { medium: "700x400>", thumb: "350x200>" }, default_url: "Flag_missing.jpg"
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/

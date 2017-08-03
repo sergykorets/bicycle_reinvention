@@ -4,8 +4,16 @@ Rails.application.routes.draw do
   root to: 'blog/bicycles#index'
 
   namespace :authors do
+    resources :suggestions, only: :index
+    get :suggested, controller: "suggestions"
     resources :categories, only: [:new, :create, :edit, :update, :destroy]
   	resources :bicycles do
+      resources :suggestions, except: :index do
+        member do
+          post :approve
+          post :disapprove
+        end
+      end
       get :disliked, on: :collection
       post :like, on: :member
       resources :comments, only: :index

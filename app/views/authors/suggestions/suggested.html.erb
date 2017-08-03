@@ -1,0 +1,21 @@
+<% provide(:page_title, 'Suggested') %>
+<% provide(:suggested, 'active') %>
+
+<div class="row">
+  <div class="col-md-8 offset-md-2">
+  	<table class="table table-striped">
+      <tr>
+        <th>Bicycle</th>
+        <th>Suggestion</th>
+        <th>Actions</th>
+      </tr>
+      <% @suggested.each do |suggest| %>
+        <tr>
+      	  <td><%= link_to Bicycle.find_by_id(suggest.bicycle_id).name, authors_bicycle_path(suggest.bicycle_id) %></td>
+          <td><%= link_to suggest.name, authors_bicycle_suggestion_path(suggest.bicycle_id, suggest) %></td>
+      	  <td><%= link_to "Approve", approve_authors_bicycle_suggestion_path(suggest.bicycle_id, suggest), method: :post, class: 'btn btn-sm btn-success' %> <%= link_to "Disapprove", disapprove_authors_bicycle_suggestion_path(suggest.bicycle_id, suggest), method: :post, class: 'btn btn-sm btn-danger' %></td>
+      	</tr>
+      <% end %>  
+    </table>
+  </div>  
+</div>

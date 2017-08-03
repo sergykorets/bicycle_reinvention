@@ -11,7 +11,10 @@
       <%= link_to "Publish", publish_authors_bicycle_path(@bicycle), method: :put, class: 'btn btn-sm btn-success' %>
     <% end %>
   </div>
+<% else %>
+  <%= link_to "Suggest edit", new_authors_bicycle_suggestion_path(@bicycle.id), class: 'btn btn-sm btn-info' %>  
 <% end %>
+
 
 <div class="row">
   <div class="col-md-8 offset-md-2">
@@ -25,8 +28,8 @@
     <hr>
     <%= link_to dislike_blog_bicycle_path(@bicycle), method: :post do %>
       <%= fa_icon('thumbs-o-down', class: 'fa-2x pull-right')%>
-    <% end %>    
-    <p class="publish"><%= @bicycle.display_day_published %></p>
+    <% end %>
+    <p class="publish"><b><%= author_name(@bicycle.author_id) %></b> <small><i><%= @bicycle.display_day_published %></i></small></p>
     <%= @bicycle.content.html_safe %>
     <hr>
   </div>
