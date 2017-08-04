@@ -1,11 +1,19 @@
 class Blog::BicyclesController < BlogController
 
   def index
-    user_dislikes = current_author.dislikes.map(&:bicycle_id)
- 	  if params[:category].present?
-      @bicycles = published_bicycles.where('id NOT in (?)', user_dislikes).most_recent.where(category_id: params[:category]).search(params[:search]).paginate(:page => params[:page], :per_page => 6)
- 	  else
-      @bicycles = published_bicycles.where('id NOT in (?)', user_dislikes).most_recent.search(params[:search]).paginate(:page => params[:page], :per_page => 6)
+    if author_signed_in?
+      user_dislikes = current_author.dislikes.map(&:bicycle_id)
+   	  if params[:category].present?
+        @bicycles = published_bicycles.where('id NOT in (?)', user_dislikes).most_recent.where(category_id: params[:category]).search(params[:search]).paginate(:page => params[:page], :per_page => 6)
+   	  else
+        @bicycles = published_bicycles.where('id NOT in (?)', user_dislikes).most_recent.search(params[:search]).paginate(:page => params[:page], :per_page => 6)
+      end
+    else
+      if params[:category].present?
+        @bicycles = published_bicycles.most_recent.where(category_id: params[:category]).search(params[:search]).paginate(:page => params[:page], :per_page => 6)
+      else
+        @bicycles = published_bicycles.most_recent.search(params[:search]).paginate(:page => params[:page], :per_page => 6)
+      end
     end
   end
 

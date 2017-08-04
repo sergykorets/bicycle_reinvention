@@ -2,9 +2,9 @@
   <td><%= link_to Bicycle.find_by_id(suggestion.bicycle_id).name, blog_bicycle_path(suggestion.bicycle_id) %></td>
   <td><%= link_to suggestion.name, authors_bicycle_suggestion_path(suggestion.bicycle_id, suggestion) %></td>
   <% if suggestion.approved %>
-  	<td><%= link_to "Approved", {}, class: 'btn btn-sm btn-success' %></td>
+  	<td><%= link_to "Approved (May be deleted)", {}, class: 'btn btn-sm btn-success' %></td>
   <% elsif suggestion.approved == false %>	
-  <td><%= link_to "Disapproved", {}, class: 'btn btn-sm btn-warning' %> <%= link_to "Edit", edit_authors_bicycle_suggestion_path(suggestion.bicycle_id, suggestion), class: 'btn btn-sm btn-info' %></td>
+  <td><%= link_to "Disapproved", {}, class: 'btn btn-sm btn-warning' %> <%= link_to "Edit & Resend", edit_authors_bicycle_suggestion_path(suggestion.bicycle_id, suggestion), class: 'btn btn-sm btn-info' %></td>
   <% else %>
   	<td><%= link_to "Edit", edit_authors_bicycle_suggestion_path(suggestion.bicycle_id, suggestion), class: 'btn btn-sm btn-info' %></td>
   <% end %>

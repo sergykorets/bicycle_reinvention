@@ -26,8 +26,8 @@
     <hr>
     <h1 class="text-center"><b><%= @bicycle.name %></b></h1>
     <hr>
-    <%= link_to dislike_blog_bicycle_path(@bicycle), method: :post do %>
-      <%= fa_icon('thumbs-o-down', class: 'fa-2x pull-right')%>
+    <%= link_to dislike_blog_bicycle_path(@bicycle), method: :post, class: 'btn btn-sm btn-info pull-right' do %>
+      <%= fa_icon('thumbs-o-down', class: 'fa-2x')%>
     <% end %>
     <p class="publish"><b><%= author_name(@bicycle.author_id) %></b> <small><i><%= @bicycle.display_day_published %></i></small></p>
     <%= @bicycle.content.html_safe %>

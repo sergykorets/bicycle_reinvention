@@ -18,7 +18,7 @@
             <td><%= bicycle.author.email %></td>
           <% end %>
           <td>
-            <%= link_to like_authors_bicycle_path(bicycle.id), method: :post do %>
+            <%= link_to like_authors_bicycle_path(bicycle.id), method: :post, class: 'btn btn-sm btn-info' do %>
               <%= fa_icon("thumbs-o-up", class: "fa") %>
             <% end %>    
           </td>

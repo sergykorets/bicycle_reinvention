@@ -4,8 +4,8 @@
       <div class="card-topper"><%= image_tag bicycle.image.url(:thumb) %></div>
     <% end %>
     <div class="card-block">
-      <%= link_to dislike_blog_bicycle_path(bicycle), method: :post do %>
-        <%= fa_icon('thumbs-o-down', class: 'fa pull-right')%>
+      <%= link_to dislike_blog_bicycle_path(bicycle), method: :post, class: 'btn btn-sm btn-info pull-right' do %>
+        <%= fa_icon('thumbs-o-down', class: 'fa')%>
       <% end %>
       <h4 class="card-title"><%= link_to bicycle.name, blog_bicycle_path(bicycle) %></h4>
       <p><%= link_to bicycle.category.name, root_path(category: bicycle.category.id) %></p>

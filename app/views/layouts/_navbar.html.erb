@@ -14,7 +14,7 @@
       <ul class="navbar-nav pull-right">
         <% if author_signed_in? %>
           <li class="nav-item">
-            <%= link_to 'Suggested', authors_suggested_path, class: "nav-link #{yield(:suggested)}" %>
+            <%= link_to 'Suggestions for me', authors_suggested_path, class: "nav-link #{yield(:suggested)}" %>
           </li>
           <% if current_author.suggestions.any? %>
             <li class="nav-item">
