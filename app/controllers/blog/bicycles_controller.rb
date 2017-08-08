@@ -1,7 +1,7 @@
 class Blog::BicyclesController < BlogController
 
   def index
-    if author_signed_in?
+    if author_signed_in? && current_author.dislikes.any?
       user_dislikes = current_author.dislikes.map(&:bicycle_id)
    	  if params[:category].present?
         @bicycles = published_bicycles.where('id NOT in (?)', user_dislikes).most_recent.where(category_id: params[:category]).search(params[:search]).paginate(:page => params[:page], :per_page => 6)
